@@ -37,5 +37,5 @@ app.get("/",(req,res)=>{
     res.render('home');
 });
 app.listen(port,()=>{
-    console.log("listening to the port");
+    console.log(`listening to the port ${port}.`);
 });
