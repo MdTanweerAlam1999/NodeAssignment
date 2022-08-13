@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style.css">
+    <title>Result Management Application</title>
+</head>
+
+<body>
+
+    {{>layout}}
+
+    <a href="/teacher/viewallrecord" class="btn btn-info backbtn" style="margin-top:5px;">Back</a>
+    <div style="display:flex;justify-content:center;">
+        <div style="width:800px;">
+            <h4 style="text-align: center;">Update Student Result</h4>
+            <h5 style="color: red;text-align:center;">{{error}}</h5>
+            <form method="POST" autocomplete="off" onsubmit="return validate();">
+                {{#each results}}
+                <div class="mb-3">
+                    <label for="name" class="form-label validate" style="font-weight:bold;">Name : </label>
+                    <input type="text" name="name" required class="form-control" value="{{this.name}}" id="name"
+                        style="border: 1px solid black;">
+                    <span style="color:red;" id="namespan"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="roll" class="form-label validate" style="font-weight:bold;">Roll No. : </label>
+                    <input type="text" name="roll" value="{{this.rollno}}" required class="form-control" id="roll"
+                        style="border: 1px solid black;">
+                    <span style="color:red;" id="rollspan"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="dob" class="form-label validate" style="font-weight:bold;">Date of Birth : </label>
+                    <input type="text" name="dob" value="{{this.dob}}" required class="form-control" id="dob"
+                        style="border: 1px solid black;">
+                    <span style="color:red;" id="dobspan"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="score" class="form-label validate" style="font-weight:bold;">Score : </label>
+                    <input type="number" name="score" value="{{this.score}}" required class="form-control" id="score"
+                        style="border: 1px solid black;">
+                    <span style="color:red;" id="scorespan"></span>
+                </div>
+                <button type="submit" class="btn btn-success backbtn">Update</button>
+               
+                {{/each}}
+            </form>
+        </div>
+
+    </div>
+
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function validate() {
+            var rollno = document.getElementById("roll");
+            var name = document.getElementById("name");
+            var score = document.getElementById("score");
+            var dob = document.getElementById("dob");
+            var scorespan = document.getElementById("scorespan");
+            var namespan = document.getElementById("namespan");
+            var dobspan = document.getElementById("dobspan");
+            var scorecheck = false;
+            var namecheck = false;
+            var dobcheck = false;
+            if (score.value >= 0 && score.value <= 500) {
+                scorecheck = true;
+            }
+            else {
+                scorespan.innerHTML = "Please, enter score between 0 and 500";
+                scorecheck = false;
+            }
+            if (name.value != "" && /^[a-zA-Z_ ]*$/g.test(name.value)) {
+                namecheck = true;
+            }
+            else {
+                namespan.innerHTML = "Please, enter the name correctly";
+                namecheck = false;
+            }
+            if (dob.value != "" && /^(0[1-9]|[12][0-9]|3[01])[ /.](0[1-9]|1[012])[ /.](19|20)\d\d$/.test(dob.value)) {
+                dobcheck = true;
+            }
+            else {
+                dobspan.innerHTML = "Please,enter dob in dd/mm/yyyy format";
+                dobcheck = false;
+            }
+            if (scorecheck && namecheck && dobcheck) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function clearinput() {
+            var scorespan = document.getElementById("scorespan");
+            var namespan = document.getElementById("namespan");
+            var dobspan = document.getElementById("dobspan");
+            namespan.innerHTML = '';
+            dobspan.innerHTML = '';
+            scorespan.innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

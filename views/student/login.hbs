@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Result Management Application</title>
+</head>
+
+<body>
+    {{>layout}}
+    <h4 style="color:red; text-align:center;">{{error}}</h4>
+    <div style="display:flex;justify-content:center;margin-top:50px;">
+        <div style="width: 800px;">
+            <h3 style="margin-bottom:10px;text-align:center;">Find Result</h3>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label" style="font-weight: bold;">Roll no: </label>
+                        <input type="text" name="roll" class="form-control" id="exampleInputPassword1" style="border:1px solid black ;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label" style="font-weight: bold;">Name: </label>
+                        <input type="text" name="studentname" class="form-control" id="exampleInputPassword1"  style="border:1px solid black ;">
+                    </div>
+                    <button type="submit" class="btn btn-primary searchbtn">Search</button>
+                    <button type="reset" class="btn searchbtn" style="border: 1px solid black;">Clear</button>
+                </form>
+            
+        </div>
+
+    </div>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
